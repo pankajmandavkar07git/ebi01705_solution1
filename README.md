@@ -12,14 +12,14 @@
 
 This project is build in Java ( version 11 ) / Spring boot ( version 2.2.6.RELEASE ) / Gradle. The Application is package as a jar file using embedded tomcat.
 
-RESTful Web services is created with Spring MVC ( org.springframework.boot:spring-boot-starter-web ).
-RESTful HATEOS is created with Spring HATEOS ( org.springframework.boot:spring-boot-starter-hateoas ).
-In Memory Databse integration is done using JPA api ( com.h2database:h2 / org.springframework.boot:spring-boot-starter-data-jpa ).
-Java bean validation is done using javax.validation .
-Web Security is achieved using Spring Security ( org.springframework.boot:spring-boot-starter-security ).
-Testing is done using JUnit5 and Spring boot Test api ( org.junit.jupiter / org.springframework.boot:spring-boot-starter-test ).
-REST Documentation is done using REST docs ans AsciiDocs ( org.springframework.restdocs:spring-restdocs-asciidoctor / org.springframework.restdocs:spring-restdocs-mockmvc ).
-Docker image generation is done with com.palantir.docker.
+* RESTful Web services is created with Spring MVC ( org.springframework.boot:spring-boot-starter-web ).
+* RESTful HATEOS is created with Spring HATEOS ( org.springframework.boot:spring-boot-starter-hateoas ).
+* In Memory Databse integration is done using JPA api ( com.h2database:h2 / org.springframework.boot:spring-boot-starter-data-jpa ).
+* Java bean validation is done using javax.validation .
+* Web Security is achieved using Spring Security ( org.springframework.boot:spring-boot-starter-security ).
+* Testing is done using JUnit5 and Spring boot Test api ( org.junit.jupiter / org.springframework.boot:spring-boot-starter-test ).
+* REST Documentation is done using REST docs ans AsciiDocs ( org.springframework.restdocs:spring-restdocs-asciidoctor / org.springframework.restdocs:spring-restdocs-mockmvc ).
+* Docker image generation is done with com.palantir.docker.
 
 ## How To Build
 

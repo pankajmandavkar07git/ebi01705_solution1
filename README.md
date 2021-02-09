@@ -11,7 +11,7 @@ You're sections headers will be used to reference location of destination.
 
 ## Description
 
-This project is build in Java( version 11) / Spring boot(version 2.2.6.RELEASE ) / Gradle. The Application is package as a jar file using embedded tomcat.
+This project is build in Java ( version 11 ) / Spring boot ( version 2.2.6.RELEASE ) / Gradle. The Application is package as a jar file using embedded tomcat.
 
 ## How To Build
 

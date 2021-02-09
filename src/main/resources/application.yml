@@ -23,8 +23,9 @@ spring:
       user: 
          name: username
          password: password
+         roles:
+            - ADMIN
          
 springdoc:
    api-docs:
       path: /api-docs
-         

@@ -1,6 +1,7 @@
 package com.emblebi.ebi01705.solution1.webresource;
 
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import java.util.List;
 
@@ -18,9 +19,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emblebi.ebi01705.solution1.service.PersonService;
+import com.emblebi.ebi01705.solution1.vo.PersonListVO;
 import com.emblebi.ebi01705.solution1.vo.PersonVO;
 
 @RestController
@@ -34,12 +37,16 @@ public class PersonResource {
 	private PersonService personService;
 	
 	@GetMapping
-	public ResponseEntity<List<PersonVO>> findAll() {
+	public ResponseEntity<PersonListVO> findAll(@RequestParam(required = false) Integer page, @RequestParam(required = false) Integer size) {
  
-		List<PersonVO> persons = personService.findAll();
+		List<PersonVO> persons = personService.findAll(page, size);
 		persons.forEach(e -> e.add(linkTo(methodOn(PersonResource.class).findById(e.getId())).withSelfRel()));
 		
-		return new ResponseEntity<>(persons, HttpStatus.OK);
+		PersonListVO personListVO = new PersonListVO();
+		personListVO.setPerson(persons);
+		personListVO.add(linkTo(methodOn(PersonResource.class).findAll(page, size)).withSelfRel());
+		
+		return new ResponseEntity<>(personListVO, HttpStatus.OK);
 	}
 	
 	@GetMapping(

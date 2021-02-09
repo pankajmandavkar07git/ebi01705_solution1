@@ -2,11 +2,16 @@ package com.emblebi.ebi01705.solution1.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -30,9 +35,21 @@ public class PersonService {
 	
 	private final Logger logger = LogManager.getLogger(PersonService.class);
 
-	public List<PersonVO> findAll() {
+	public List<PersonVO> findAll(Integer page, Integer size) {
 		
-		return PersonUtils.copyPropertiesToList(this.personRepository.findAll());
+		if(page!=null) {
+			if(size==null || size.intValue()==0) {
+				size = 10;
+			}
+			Pageable sortedById = PageRequest.of(page, size, Sort.by("id"));
+			
+			Page<Person> persons = this.personRepository.findAll(sortedById);
+					
+			return PersonUtils.copyPropertiesToList(persons.get().collect(Collectors.toList()));
+		}
+		else {
+			return PersonUtils.copyPropertiesToList(this.personRepository.findAll(Sort.by("id")));
+		}
 	}
 	
 	public Person findByFirstName(String firstName) {

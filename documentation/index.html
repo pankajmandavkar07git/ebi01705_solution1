@@ -434,7 +434,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="header">
 <h1>REST Docs Example for Simple CRUD Operation</h1>
 <div class="details">
-<span id="revnumber">version 0.0.1-SNAPSHOT</span>
+<span id="revnumber">version 1.0.1-RELEASE</span>
 </div>
 </div>
 <div id="content">
@@ -453,7 +453,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">POST /person HTTP/1.1
 Content-Type: application/json
-Accept: application/json
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 Content-Length: 102
 Host: localhost:8080
 
@@ -469,7 +469,7 @@ Host: localhost:8080
 <div class="title">response</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 201 Created
-Content-Type: application/json
+Content-Type: application/hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -500,7 +500,7 @@ Content-Length: 196
 <div class="title">request</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /person/6 HTTP/1.1
-Content-Type: application/json
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -539,7 +539,7 @@ Content-Length: 196
 <div class="title">request</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">GET /person HTTP/1.1
-Content-Type: application/json
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -547,34 +547,44 @@ Host: localhost:8080</code></pre>
 <div class="title">response</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 200 OK
-Content-Type: application/json
+Content-Type: application/hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
 Pragma: no-cache
 Expires: 0
 X-Frame-Options: DENY
-Content-Length: 400
+Content-Length: 592
 
-[ {
-  "links" : [ {
-    "rel" : "self",
-    "href" : "http://localhost:8080/person/2"
+{
+  "person" : [ {
+    "_links" : {
+      "self" : {
+        "href" : "http://localhost:8080/person/2"
+      }
+    },
+    "first_name" : "John",
+    "last_name" : "Keynes",
+    "age" : 29,
+    "favourite_colour" : "red"
+  }, {
+    "_links" : {
+      "self" : {
+        "href" : "http://localhost:8080/person/4"
+      }
+    },
+    "first_name" : "Sarah",
+    "last_name" : "Robinson",
+    "age" : 54,
+    "favourite_colour" : "blue"
   } ],
-  "first_name" : "John",
-  "last_name" : "Keynes",
-  "age" : 29,
-  "favourite_colour" : "red"
-}, {
-  "links" : [ {
-    "rel" : "self",
-    "href" : "http://localhost:8080/person/4"
-  } ],
-  "first_name" : "Sarah",
-  "last_name" : "Robinson",
-  "age" : 54,
-  "favourite_colour" : "blue"
-} ]</code></pre>
+  "_links" : {
+    "self" : {
+      "href" : "http://localhost:8080/person{?page,size}",
+      "templated" : true
+    }
+  }
+}</code></pre>
 </div>
 </div>
 </div>
@@ -587,7 +597,7 @@ Content-Length: 400
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">PUT /person/5 HTTP/1.1
 Content-Type: application/json
-Accept: application/json
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 Content-Length: 107
 Host: localhost:8080
 
@@ -603,7 +613,7 @@ Host: localhost:8080
 <div class="title">response</div>
 <div class="content">
 <pre class="highlight nowrap"><code class="language-http" data-lang="http">HTTP/1.1 202 Accepted
-Content-Type: application/json
+Content-Type: application/hal+json
 X-Content-Type-Options: nosniff
 X-XSS-Protection: 1; mode=block
 Cache-Control: no-cache, no-store, max-age=0, must-revalidate
@@ -633,7 +643,8 @@ Content-Length: 201
 <div class="listingblock">
 <div class="title">request</div>
 <div class="content">
-<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /person/8 HTTP/1.1
+<pre class="highlight nowrap"><code class="language-http" data-lang="http">DELETE /person/9 HTTP/1.1
+Authorization: Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 Host: localhost:8080</code></pre>
 </div>
 </div>
@@ -657,7 +668,7 @@ X-Frame-Options: DENY</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version 0.0.1-SNAPSHOT<br>
+Version 1.0.1-RELEASE<br>
 Last updated 2021-02-09 08:16:22 +0800
 </div>
 </div>

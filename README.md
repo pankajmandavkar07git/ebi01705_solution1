@@ -73,16 +73,23 @@ gradle clean build asciidoctor
 ## Important Notes
 
 * H2 DB Creds
+
 console url: http://localhost:8000/api/h2-console/
+
 JDBC URL: jdbc:h2:mem:testdb
+
 username: sa
+
 password: password
 
 * Web Security Creds
+
 username: username
+
 password: password
 
 * Basic Auth
+
 Basic dXNlcm5hbWU6cGFzc3dvcmQ=
 
 ## About the Service

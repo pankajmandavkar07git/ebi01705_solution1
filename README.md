@@ -24,13 +24,13 @@ gradle clean build
 ## How To Deploy
 
 There are two way to do deploy the application
-	1.	Create Docker image locally
+* Create Docker image locally
 	
 ```shell
 gradle clean build docker
 ```
 	
-	2.	Pull image from dockerhub
+* Pull image from dockerhub
 	
 ```shell
 docker pull pankajmandavkar07/solution1:latest
@@ -39,14 +39,14 @@ docker pull pankajmandavkar07/solution1:latest
 ## How To Run
 
 There are two way to do deploy the application
-	1.	Can run directly with java pre installed
+* Can run directly with java pre installed
 	
 ```shell
 gradle clean build
 java -jar ./build/libs/solution1-0.0.1-SNAPSHOT.jar
 ```
 	
-	2.	Run docker image. for this approach, need to have docker install in local
+* Run docker image. for this approach, need to have docker install in local
 	
 ```shell
 docker run pankajmandavkar07/solution1:latest
